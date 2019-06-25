@@ -27,7 +27,7 @@ stages:
     - script: |
         docker run --rm --privileged multiarch/qemu-user-static:register --reset
         docker build -f Dockerfile.arm32v7 -t gglanzani/stringer .
-        docker login -u=$(docker_user) -p=$(docker_pass)
+        docker login -u="$(docker_user)" -p="$(docker_pass)"
         docker tag gglanzani/stringer gglanzani/stringer:$(tag)
         docker push gglanzani/stringer:$(tag)
         docker push gglanzani/stringer
