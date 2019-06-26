@@ -25,6 +25,7 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - script: |
+        docker --version
         docker buildx build -f Dockerfile.arm32v7 --platform linux/arm/v7 -t gglanzani/stringer .
         docker login -u="$(docker_user)" -p="$(docker_pass)"
         docker tag gglanzani/stringer gglanzani/stringer:$(tag)
